@@ -1,0 +1,10 @@
+[
+  {
+    "name": "collectionMillerRetailer",
+    "policy": "OR('MillerOrgMSP.peer','RetailerOrgMSP.peer')",
+    "requiredPeerCount": 1,
+    "maxPeerCount": 2,
+    "blockToLive": 100,
+    "memberOnlyRead": true
+  }
+]

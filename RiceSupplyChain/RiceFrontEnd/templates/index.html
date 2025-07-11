@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rice Supply Chain</title>
+
+  <!-- Link CSS and JS -->
+  <link rel="stylesheet" href="/public/styles/style.css" />
+  <script src="/public/scripts/index.js" defer></script>
+</head>
+
+<body>
+  <h1>Rice Supply Chain Dashboard</h1>
+
+  <!-- ========== ORG1: CREATE RICE BATCH ========= -->
+  <div class="section farmer">
+    <h2>Create Rice Batch (Org1)</h2>
+    <form onsubmit="createRiceBatch(event)">
+      <label>Batch ID</label>
+      <input type="text" id="batchID" required>
+
+      <label>Variety</label>
+      <input type="text" id="variety" required>
+
+      <label>Harvest Date</label>
+      <input type="date" id="harvestDate" required>
+
+      <label>Quantity (Kg)</label>
+      <input type="number" id="quantity" required>
+
+      <label>Farmer Name</label>
+      <input type="text" id="farmerName" required>
+
+      <button type="submit">Create Batch</button>
+      <button type="reset">Clear</button>
+    </form>
+  </div>
+
+  <!-- ========== ORG1/ANY: QUERY RICE BATCH ========= -->
+  <div class="section query">
+    <h2>Query Rice Batch by ID</h2>
+    <form onsubmit="readData(event)">
+      <label for="batchIDInput">Enter Batch ID</label>
+      <input id="batchIDInput" type="text" required />
+      <button type="submit">Query</button>
+      <button type="reset">Clear</button>
+    </form>
+  </div>
+
+  <div class="section query">
+    <h2> View All Rice Batches</h2>
+    <button onclick="getAllRiceBatches()">Get All Batches</button>
+  </div>
+
+  <div class="section query">
+    <h2> Query Batches by Range</h2>
+    <label>Start Key:</label>
+    <input id="rangeStart" type="text" placeholder="e.g. PADDY001">
+    <label>End Key:</label>
+    <input id="rangeEnd" type="text" placeholder="e.g. PADDY005">
+    <button onclick="getRiceByRange()">Query Range</button>
+  </div>
+
+  <div class="section query">
+    <h2> View Batch History</h2>
+    <label>Batch ID:</label>
+    <input id="historyBatchID" type="text" placeholder="e.g. PADDY001">
+    <button onclick="getRiceHistory()">Get History</button>
+  </div>
+
+  <!-- ========== ORG2: CREATE ORDER ========= -->
+  <div class="section miller">
+    <h2>Create Processing Order (Org2)</h2>
+    <label>Order ID</label>
+    <input id="orderID" type="text" placeholder="e.g. ORDER001" />
+
+    <label>Variety</label>
+    <input id="orderVariety" type="text" placeholder="e.g. Sona Masuri" />
+
+    <label>Quantity (Kg)</label>
+    <input id="orderQuantity" type="number" />
+
+    <label>Miller Name</label>
+    <input id="millerName" type="text" placeholder="e.g. MillerX" />
+
+    <button onclick="createOrder()">➕ Submit Order</button>
+  </div>
+
+  <!-- ========== ORG2: MATCH ORDER ========= -->
+  <div class="section miller">
+    <h2>Match Paddy Batch to Processing Order</h2>
+    <label>Batch ID</label>
+    <input id="matchBatchID" type="text" placeholder="e.g. PADDY001" />
+
+    <label>Order ID</label>
+    <input id="matchOrderID" type="text" placeholder="e.g. ORDER001" />
+
+    <button onclick="matchOrder()">Match Order</button>
+  </div>
+
+  <!-- ========== ORG3: DISPATCH BATCH ========== -->
+  <div class="section retailer">
+    <h2> Dispatch to Retailer (Org3)</h2>
+    <label>Batch ID</label>
+    <input id="dispatchBatchID" type="text" placeholder="e.g. PADDY001" />
+
+    <label>Retailer Name</label>
+    <input id="retailerName" type="text" placeholder="e.g. RetailerX" />
+
+    <button onclick="dispatchToRetailer()">Dispatch</button>
+  </div>
+</body>
+
+</html>

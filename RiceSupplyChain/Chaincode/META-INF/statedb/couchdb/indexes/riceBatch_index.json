@@ -1,0 +1,7 @@
+{
+  "index": {
+    "fields": ["batchID"]
+  },
+  "name": "batchID-index",
+  "type": "json"
+}
